@@ -6,3 +6,27 @@
 // make next char greater -> [1,2,1] = counter = 1
 // make next char greater -> [1,2,3] = counter = 3
 // arrayChange(inputArray) = 3.
+
+function arrayChange(inputArray = [-1000, 0, -2, 0]) {
+  let count = 0;
+
+  for (let i = 0; i < inputArray.length; i++) {
+    let num1 = inputArray[i];
+    let num2 = inputArray[i + 1];
+    if (
+      inputArray[i] !== "undefined" &&
+      inputArray[i + 1] !== "undefined" &&
+      num1 >= num2
+    ) {
+      let diff = num1 + 1 - num2;
+      count += diff;
+      console.log(`adding ${diff}`);
+      inputArray[i + 1] = num1 + 1;
+    }
+  }
+  console.log(count);
+  console.log(inputArray);
+  return count;
+}
+
+arrayChange();
