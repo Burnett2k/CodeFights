@@ -13,6 +13,7 @@ function arrayChange(inputArray = [-1000, 0, -2, 0]) {
   for (let i = 0; i < inputArray.length; i++) {
     let num1 = inputArray[i];
     let num2 = inputArray[i + 1];
+    //be careful when checking if ints exist because a 0 evaluates to false and could give bad behavior
     if (
       inputArray[i] !== "undefined" &&
       inputArray[i + 1] !== "undefined" &&
