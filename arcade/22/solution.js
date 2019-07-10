@@ -11,14 +11,12 @@
 // ----- Test cases ----- //
 const input = [
   {
-    input1: [6, 6, 6],
-    input2: [6, 6, 6],
-    answer: true
+    input1: [5, 3, 6, 7, 9],
+    answer: 4
   },
   {
-    input1: [1, 0, 2, 3],
-    input2: [1, 3, 2, 0],
-    answer: true
+    input1: [2, 3],
+    answer: 4
   }
 ];
 // ----- Test cases ----- //
@@ -48,6 +46,18 @@ function main() {
 
 function runSolution(item) {
   // enter solution here
+  item = item.input1;
+  item.sort();
+
+  //[3,5,6,7,9]
+
+  let nextFreeItem = [];
+
+  //sort array
+  // find first open spot after first blockage
+  // count # of jumps at a minimum it could take
+  //see if # of jumps avoids obstacles
+  //if not, increment by 1 and try again until an answer is found
 }
 
 main();
