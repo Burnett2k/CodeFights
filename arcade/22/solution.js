@@ -24,7 +24,7 @@ const input = [
 function main() {
   var failures = [];
   input.forEach(function(item) {
-    console.log(`are [${item.input1}] & [${item.input2}] similar??`);
+    console.log(`find minimum hops to clear obstacles in [${item.input1}]`);
     console.log(`expected answer of ${item.answer}`);
 
     const answer = runSolution(item);
@@ -47,14 +47,50 @@ function main() {
 function runSolution(item) {
   // enter solution here
   item = item.input1;
-  item.sort();
+
+  //[9,7,5,6,3]
 
   //[3,5,6,7,9]
+  //       - x - - - x -
+  //[0,1,2,3,4,5,6,7,8,9,10]
 
-  let nextFreeItem = [];
+  // [2,3]
+  //      x x -
+  // [0,1,2,3]
+  //
+
+  let jumpLength = 1;
+
+  let solutionFound = false;
 
   //sort array
+  item.sort();
+
+  // brute force jump until you get a solution
+
+  let i = 0;
+
+  do {
+    // jump and check if you hit a landmine
+    let location = i * jumpLength;
+
+    if (item.indexOf(location) > -1) {
+      i = 0;
+      jumpLength++;
+      // we hit a landmine, so reset the index and increment
+    } else {
+      // didn't hit a landmine yet
+      i++;
+      if (location > item.length) {
+        solutionFound = true;
+      }
+    }
+  } while (!solutionFound);
+
+  return jumpLength;
+
   // find first open spot after first blockage
+
   // count # of jumps at a minimum it could take
   //see if # of jumps avoids obstacles
   //if not, increment by 1 and try again until an answer is found
