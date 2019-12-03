@@ -17,6 +17,18 @@ const input = [
   {
     input1: [2, 3],
     answer: 4
+  },
+  {
+    input1: [1, 4, 10, 6, 2],
+    answer: 7
+  },
+  {
+    input1: [1000, 999],
+    answer: 6
+  },
+  {
+    input1: [19, 32, 11, 23],
+    answer: 3
   }
 ];
 // ----- Test cases ----- //
@@ -79,9 +91,10 @@ function runSolution(item) {
       jumpLength++;
       // we hit a landmine, so reset the index and increment
     } else {
-      // didn't hit a landmine yet
       i++;
-      if (location > item.length) {
+
+      // check if we have avoided all obstacles and if so, we found the solution
+      if (location > item[item.length - 1]) {
         solutionFound = true;
       }
     }
